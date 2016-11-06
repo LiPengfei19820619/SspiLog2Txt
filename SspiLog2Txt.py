@@ -9,7 +9,8 @@ def dict_factory(cursor, row):
 
 def write_log_to_txt(file, log):
     with open(file, 'wt') as f:
-        f.write(log["time"])
+        f.write("<"+log["time"]+">----------->>>Recv Msg Is:\n")
+        f.write("<"+log["time"]+">"+log["oper_req"])
 
 def main(argv):
     inputfile = ''
