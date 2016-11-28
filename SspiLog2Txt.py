@@ -43,11 +43,13 @@ def write_logs_to_txt(file, logs):
     """wirite log to text file"""
     with open(file, 'a') as logfile:
         for log in logs:
-            logfile.write("<"+log["time"] + ">----------->>>From Socket(" + log["serial"] + "), ")
+            logfile.write("<" + log["time"] + ">----------->>>From Socket(" + log["serial"] + "), ")
             logfile.write("Client(" + log["ipaddr"] + "), ")
             logfile.write("Soap Buffer Index(0), Recv Msg Is:\n")
             logfile.write("<" + log["time"] + ">" + log["oper_req"].replace("\r\n", "\n") + "\n")
-            logfile.write("<" + log["time"] + ">" + "-----------<<<Send Msg Is:\n")
+
+            logfile.write("<" + log["time"] + ">-----------<<<To Socket(" + log["serial"] + "), ")
+            logfile.write("Soap Buffer Index(0), Send Msg Is:\n")
             logfile.write("<" + log["time"] + ">" + log["oper_rsp"].replace("\r\n", "\n") + "\n")
         logfile.close()
 
